@@ -18,6 +18,10 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.webkit.WebSettingsCompat
 import androidx.webkit.WebViewFeature
 import com.roozbehzarei.webview.databinding.ActivityMainBinding
+import android.graphics.Color
+import android.webkit.JavascriptInterface
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsControllerCompat
 
 // The URL of the website to be loaded
 private const val WEBSITE = "https://kppllive.in"
@@ -47,6 +51,12 @@ class MainActivity : AppCompatActivity() {
             // Disable support for zooming using webView's on-screen zoom controls and gestures
             setSupportZoom(false)
         }
+
+        webView.addJavascriptInterface(
+        ThemeBridge(),
+        "Android"
+        )
+        
         // If dark theme is turned on, automatically render all web contents using a dark theme
         if (WebViewFeature.isFeatureSupported(WebViewFeature.ALGORITHMIC_DARKENING)) {
             when (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
@@ -107,6 +117,30 @@ class MainActivity : AppCompatActivity() {
         mCallback.isEnabled = true
 
         setContentView(binding.root)
+    }
+
+    inner class ThemeBridge {
+
+        @JavascriptInterface
+        fun setThemeColor(color: String) {
+            runOnUiThread {
+                try {
+                    window.statusBarColor = Color.parseColor(color)
+                    window.navigationBarColor = Color.parseColor(color)
+
+                    val controller = WindowCompat.getInsetsController(
+                        window,
+                        window.decorView
+                    )
+
+                    controller.isAppearanceLightStatusBars = false
+                    controller.isAppearanceLightNavigationBars = false
+
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            }
+        }
     }
 
     private inner class MyWebViewClient : WebViewClient() {
