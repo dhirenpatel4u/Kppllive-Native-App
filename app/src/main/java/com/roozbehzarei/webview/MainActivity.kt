@@ -22,6 +22,8 @@ import android.graphics.Color
 import android.webkit.JavascriptInterface
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsControllerCompat
+import android.webkit.CookieManager
+import android.webkit.WebStorage
 
 // The URL of the website to be loaded
 private const val WEBSITE = "https://kppllive.in"
@@ -51,6 +53,17 @@ class MainActivity : AppCompatActivity() {
             // Disable support for zooming using webView's on-screen zoom controls and gestures
             setSupportZoom(false)
         }
+
+        val cookieManager = CookieManager.getInstance()
+
+        cookieManager.setAcceptCookie(true)
+        cookieManager.setAcceptThirdPartyCookies(webView, true)
+
+        webView.settings.javaScriptEnabled = true
+        webView.settings.domStorageEnabled = true
+        webView.settings.databaseEnabled = true
+
+        CookieManager.getInstance().flush()
 
         webView.addJavascriptInterface(
         ThemeBridge(),
@@ -172,6 +185,7 @@ class MainActivity : AppCompatActivity() {
         // Hide progress indicator when a webpage is finished loading
         override fun onPageFinished(view: WebView?, url: String?) {
             super.onPageFinished(view, url)
+            CookieManager.getInstance().flush()
             binding.root.isRefreshing = false
             binding.progressIndicator.visibility = View.INVISIBLE
         }
