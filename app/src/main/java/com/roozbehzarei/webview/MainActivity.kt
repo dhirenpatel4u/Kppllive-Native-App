@@ -39,12 +39,8 @@ class MainActivity : AppCompatActivity() {
         installSplashScreen()
         super.onCreate(savedInstanceState)
         
-        OneSignal.initialize(
-            this,
-            "fa35403c-dda5-465c-a5b0-7a102ad0a9a0"
-        )
-
-        OneSignal.Notifications.requestPermission(true)
+        OneSignal.initWithContext(this)
+        OneSignal.setAppId("fa35403c-dda5-465c-a5b0-7a102ad0a9a0")
 
         setContentView(R.layout.activity_main)
         
