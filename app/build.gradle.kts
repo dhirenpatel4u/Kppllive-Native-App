@@ -42,6 +42,9 @@ android {
 }
 
 dependencies {
+    implementation(platform("com.google.firebase:firebase-bom:34.15.0"))
+    implementation("com.google.firebase:firebase-analytics")
+
     implementation("com.onesignal:OneSignal:[5.6.1, 5.9.99]")
 
     implementation("androidx.core:core-ktx:1.12.0")
