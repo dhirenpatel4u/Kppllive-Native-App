@@ -42,7 +42,7 @@ android {
 }
 
 dependencies {
-    implementation("com.onesignal:OneSignal:[5.1.0,5.1.99]")
+    implementation("com.onesignal:OneSignal:5.1.29")
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
