@@ -24,7 +24,6 @@ import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import android.webkit.CookieManager
 import android.webkit.WebStorage
-import com.onesignal.OneSignal
 
 // The URL of the website to be loaded
 private const val WEBSITE = "https://kppllive.in"
@@ -37,13 +36,7 @@ class MainActivity : AppCompatActivity() {
     @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
-        super.onCreate(savedInstanceState)
-        
-        OneSignal.initWithContext(this)
-        OneSignal.setAppId("fa35403c-dda5-465c-a5b0-7a102ad0a9a0")
-
-        setContentView(R.layout.activity_main)
-        
+        super.onCreate(savedInstanceState)        
         binding = ActivityMainBinding.inflate(layoutInflater)
 
         /**
