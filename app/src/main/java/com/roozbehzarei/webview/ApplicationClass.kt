@@ -2,7 +2,7 @@
 // PURPOSE: Initialize OneSignal when your app launches
 // REQUIREMENT: Must be registered in AndroidManifest.xml
 
-package com.your.package.name // Replace with your actual package name
+package com.roozbehzarei.superwebview // Replace with your actual package name
 
 import android.app.Application
 import kotlinx.coroutines.CoroutineScope
