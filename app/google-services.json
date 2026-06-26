@@ -1,13 +1,29 @@
 {
-  "type": "service_account",
-  "project_id": "kppllive-680ed",
-  "private_key_id": "200c07325862bcb7eb4912080df0d9c279ee40fc",
-  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC/JGmTu+agqijA\nNXflVDbkkvtmI9wgCMsNr7RE/tA71nPGRS3djRRQcHwc3xx5EQFRLC0oOH5u3kun\ncAT3nPBD4EbkYpSZB6akOcMlQDtm9NbMNQhPrRLV6S0/x42WL1fU0wWyd8OvmXFA\nbdKKlao7p4Xr1ML9RKJ8Ew1SWhhD15N6mZm5Mcel0aPSViTCloCz52nzDyDP/TzT\nIjpdJ04K/pVnBozVUtBh7OhSMAA5gipOmoUIqWfyWVjn9Wc9Txo8lxg2qVZKjXsW\na8ATWNWkmka3DdlQMdByzytky10uhDSwaBDSfIMwbzrVMEFavzD87M4XAiAshXyV\n8ETDGlrzAgMBAAECggEAIGEsuWgVU5Y/vP/RxbmUavgzOkRM3+hdbX4cTavU3q4f\ngrDpaiSiElZb0BBDpIaq8HNJWwzm7iUeL8kcLk4ZrYXqvHmurpXLNvrKAh91cKV9\nVa6OL+Ej1bTgg3Nsmsp+WIE+79K2BaM6ui1ggzWDVwOz/hVWysy7scUQdqjof2VU\njKp7oZFVtfufizi/jex9Vr1IuUBBmYoxhMqi+mWwPfsSOat0QcKH4qY+FOjPolNZ\njjx6DjzqlbT4OYcu6KOf8iEydTxcZt0Z4TXcFuLVCHC1SI0AiCQ7PQgIJp8/kfly\naGM55z+sMtw64uMcvKSq8lQdAE9OFQUjP2iKFJrBUQKBgQDkSWySKVxzfhyPrUyt\nBI50qTy17oEBhxVuZKTvD/Mh4oq4ruzRlK8RNuiMxeseRBxrHmKtYWyQDxF5kuxY\nYw2dz61JukoRrhT0Eo7/8kqeJUR4KjMmQ8pCN2ep1jwSWWpRIvgdabUhL+UdI3uz\n5lixBpqEgz92xnR3F/G8Z/DZxQKBgQDWWKECTaHJICjMmLGYbKHpv28tbwTDg9lN\nDGSsK9hiH50iBGMDrPPE86BnSApM7Ps3qFqzY2A+Kaq0VsFhf/Hfic2F1xz1fazy\nO1kZrDfFU5NJy0qOZ4/Uq8OfSaxvMPHB77kKdQ5TI89Mbo7KbZaz0l8ICLVHTHFm\nycVP7XmFVwKBgGNdikJ8el9S7z+ioRNWPmONHn3aGJD/qVZpvFjKSnvfTZ5hlXcM\nDr+hdMuBgnukDfKaQT1SgJyb0nFmgDVguBaOxNCoo4DakwhB47iIT+5SLmFXjPgE\n3c7AqwCD3ZXnEZ3LaM/0qQCPBl0OitOdWdGEHFG9hyw96YfFBlWJsI45AoGBAJ+c\ny/jNGmaMvhTst4LLkh5f4Ugx3ZhB/HS1f9n9pFodNIN6RMkd50CIMq/2I0V5SvD9\nOt1OaQKhQG6eE86o2dId6Z96uiPMfBa9PvIxHi6gt5NCALjeQWqapUdeMztxdPV3\nr5Er7YjXp6xAv6/Zv1kUlJOE+IipUeC662VDbzRtAoGAB17ImQ38LscWEFFmrWNZ\nskDQ9Q8hBliZuR/+FQh3A2A3UtRza5V8sG3X//qhSbNdWyzFTLGBGCiix+a8kdeE\nK8PKtX7XcV3z+RC+uJqpKsosQgNX4JhEHwsCZ8JUtoSgKA6ydCmiJK5nwjqa3E4W\nrM3COVgjBvXPlC2PfETpI2U=\n-----END PRIVATE KEY-----\n",
-  "client_email": "firebase-adminsdk-fbsvc@kppllive-680ed.iam.gserviceaccount.com",
-  "client_id": "112323363264664368188",
-  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-  "token_uri": "https://oauth2.googleapis.com/token",
-  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-fbsvc%40kppllive-680ed.iam.gserviceaccount.com",
-  "universe_domain": "googleapis.com"
+  "project_info": {
+    "project_number": "1019470641068",
+    "project_id": "kppllive-680ed",
+    "storage_bucket": "kppllive-680ed.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1019470641068:android:716c2a331eb514ea862c09",
+        "android_client_info": {
+          "package_name": "com.kppllive.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMBReMRCLmzb-P2JZVUN597cmPMIgJM_A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
 }
