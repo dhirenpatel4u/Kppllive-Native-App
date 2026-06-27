@@ -162,15 +162,7 @@ override fun shouldOverrideUrlLoading(
     view: WebView?,
     request: WebResourceRequest?
 ): Boolean {
-
-    if (request?.url.toString().contains(WEBSITE)) {
-        return false
-    }
-
-    Intent(Intent.ACTION_VIEW, request?.url).apply {
-        startActivity(this)
-    }
-    return true
+    return false
 }
 
     override fun onPageStarted(
