@@ -156,63 +156,71 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-override fun shouldOverrideUrlLoading(
-    view: WebView?,
-    request: WebResourceRequest?
-): Boolean {
+private inner class MyWebViewClient : WebViewClient() {
 
-    val url = request?.url.toString()
+    override fun shouldOverrideUrlLoading(
+        view: WebView?,
+        request: WebResourceRequest?
+    ): Boolean {
 
-    // Google OAuth links
-    if (url.contains("accounts.google.com")) {
+        val url = request?.url.toString()
+
+        // Google OAuth links open in browser
+        if (url.contains("accounts.google.com")) {
+            startActivity(Intent(Intent.ACTION_VIEW, request?.url))
+            return true
+        }
+
+        // Internal website links stay in WebView
+        if (url.contains("kppllive.in")) {
+            return false
+        }
+
+        // External links open in browser
         startActivity(Intent(Intent.ACTION_VIEW, request?.url))
         return true
     }
 
-    // Open kppllive.in links inside WebView
-    if (url.contains("kppllive.in")) {
-        return false
+    override fun onPageStarted(
+        view: WebView?,
+        url: String?,
+        favicon: Bitmap?
+    ) {
+        super.onPageStarted(view, url, favicon)
+        binding.webView.visibility = View.VISIBLE
+        binding.errorLayout.visibility = View.GONE
+        binding.progressIndicator.visibility = View.VISIBLE
     }
 
-    // Other external links
-    startActivity(Intent(Intent.ACTION_VIEW, request?.url))
-    return true
-}
+    override fun onPageFinished(
+        view: WebView?,
+        url: String?
+    ) {
+        super.onPageFinished(view, url)
+        CookieManager.getInstance().flush()
+        binding.root.isRefreshing = false
+        binding.progressIndicator.visibility = View.INVISIBLE
+    }
 
-        // Show progress indicator when a webpage is being loaded
-        override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
-            super.onPageStarted(view, url, favicon)
-            binding.webView.visibility = View.VISIBLE
-            binding.errorLayout.visibility = View.GONE
-            binding.progressIndicator.visibility = View.VISIBLE
-        }
+    override fun onReceivedError(
+        view: WebView?,
+        request: WebResourceRequest?,
+        error: WebResourceError?
+    ) {
+        super.onReceivedError(view, request, error)
+        binding.webView.visibility = View.GONE
+        binding.errorLayout.visibility = View.VISIBLE
+        binding.root.isEnabled = false
 
-        // Hide progress indicator when a webpage is finished loading
-        override fun onPageFinished(view: WebView?, url: String?) {
-            super.onPageFinished(view, url)
-            CookieManager.getInstance().flush()
-            binding.root.isRefreshing = false
-            binding.progressIndicator.visibility = View.INVISIBLE
-        }
-
-        // Show error screen if loading a webpage has failed
-        override fun onReceivedError(
-            view: WebView?, request: WebResourceRequest?, error: WebResourceError?
-        ) {
-            super.onReceivedError(view, request, error)
-            binding.webView.visibility = View.GONE
-            binding.errorLayout.visibility = View.VISIBLE
-            binding.root.isEnabled = false
-            binding.retryButton.setOnClickListener {
-                if (view?.url.isNullOrEmpty()) {
-                    view?.loadUrl(WEBSITE)
-                } else {
-                    view?.reload()
-                }
+        binding.retryButton.setOnClickListener {
+            if (view?.url.isNullOrEmpty()) {
+                view?.loadUrl(WEBSITE)
+            } else {
+                view?.reload()
             }
         }
-
     }
+}
 
     private inner class MyWebChromeClient : WebChromeClient() {
 
