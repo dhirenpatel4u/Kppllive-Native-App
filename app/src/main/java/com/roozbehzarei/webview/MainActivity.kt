@@ -156,23 +156,28 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private inner class MyWebViewClient : WebViewClient() {
+override fun shouldOverrideUrlLoading(
+    view: WebView?,
+    request: WebResourceRequest?
+): Boolean {
 
-        /**
-         * Let [webView] load the [WEBSITE]
-         * Otherwise, launch another Activity that handles URLs
-         */
-        override fun shouldOverrideUrlLoading(
-            view: WebView?, request: WebResourceRequest?
-        ): Boolean {
-            if (request?.url.toString().contains(WEBSITE)) {
-                return false
-            }
-            Intent(Intent.ACTION_VIEW, request?.url).apply {
-                startActivity(this)
-            }
-            return true
-        }
+    val url = request?.url.toString()
+
+    // Google OAuth links
+    if (url.contains("accounts.google.com")) {
+        startActivity(Intent(Intent.ACTION_VIEW, request?.url))
+        return true
+    }
+
+    // Open kppllive.in links inside WebView
+    if (url.contains("kppllive.in")) {
+        return false
+    }
+
+    // Other external links
+    startActivity(Intent(Intent.ACTION_VIEW, request?.url))
+    return true
+}
 
         // Show progress indicator when a webpage is being loaded
         override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
