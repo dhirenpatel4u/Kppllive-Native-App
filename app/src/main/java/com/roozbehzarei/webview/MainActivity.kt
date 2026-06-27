@@ -158,28 +158,20 @@ class MainActivity : AppCompatActivity() {
 
 private inner class MyWebViewClient : WebViewClient() {
 
-    override fun shouldOverrideUrlLoading(
-        view: WebView?,
-        request: WebResourceRequest?
-    ): Boolean {
+override fun shouldOverrideUrlLoading(
+    view: WebView?,
+    request: WebResourceRequest?
+): Boolean {
 
-        val url = request?.url.toString()
-
-        // Google OAuth links open in browser
-        if (url.contains("accounts.google.com")) {
-            startActivity(Intent(Intent.ACTION_VIEW, request?.url))
-            return true
-        }
-
-        // Internal website links stay in WebView
-        if (url.contains("kppllive.in")) {
-            return false
-        }
-
-        // External links open in browser
-        startActivity(Intent(Intent.ACTION_VIEW, request?.url))
-        return true
+    if (request?.url.toString().contains(WEBSITE)) {
+        return false
     }
+
+    Intent(Intent.ACTION_VIEW, request?.url).apply {
+        startActivity(this)
+    }
+    return true
+}
 
     override fun onPageStarted(
         view: WebView?,
