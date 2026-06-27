@@ -36,7 +36,15 @@ class MainActivity : AppCompatActivity() {
     @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
-        super.onCreate(savedInstanceState)        
+        super.onCreate(savedInstanceState)   
+            intent?.data?.let { uri ->
+
+                if (uri.scheme == "kppllive" &&
+                    uri.host == "login-success") {
+
+                    webView.loadUrl("https://kppllive.in/index-v2.php")
+                }
+            }
         binding = ActivityMainBinding.inflate(layoutInflater)
 
         /**
