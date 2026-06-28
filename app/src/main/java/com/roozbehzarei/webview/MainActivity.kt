@@ -24,6 +24,7 @@ import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import android.webkit.CookieManager
 import android.webkit.WebStorage
+import android.net.Uri
 
 // The URL of the website to be loaded
 private const val WEBSITE = "https://kppllive.in"
@@ -196,10 +197,12 @@ override fun shouldOverrideUrlLoading(
     return true
 }
 
-override fun onNewIntent(intent: Intent?) {
+override fun onNewIntent(intent: Intent) {
     super.onNewIntent(intent)
 
-    intent?.data?.let { uri ->
+    setIntent(intent) // important
+
+    intent.data?.let { uri ->
         if (uri.scheme == "kppl" && uri.host == "login-success") {
 
             val email = uri.getQueryParameter("email")
