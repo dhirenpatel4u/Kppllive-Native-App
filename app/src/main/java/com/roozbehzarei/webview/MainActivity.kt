@@ -174,16 +174,12 @@ override fun onNewIntent(intent: Intent) {
 
         @JavascriptInterface
         fun setUser(username: String) {
-
             OneSignal.login(username)
+        }
 
-            runOnUiThread {
-                android.widget.Toast.makeText(
-                    this@MainActivity,
-                    "External ID: $username",
-                    android.widget.Toast.LENGTH_LONG
-                ).show()
-            }
+        @JavascriptInterface
+        fun logoutUser() {
+            OneSignal.logout()
         }
 
         @JavascriptInterface
