@@ -132,6 +132,19 @@ class MainActivity : AppCompatActivity() {
         mCallback.isEnabled = true
 
         setContentView(binding.root)
+        intent?.data?.let { uri ->
+            if (uri.scheme == "kppl" && uri.host == "login-success") {
+
+                val email = uri.getQueryParameter("email")
+
+                if (email != null) {
+                    webView.loadUrl(
+                        "https://kppllive.in/app-login.php?email=$email"
+                    )
+                }
+            }
+        }
+        
     }
 
     inner class ThemeBridge {
@@ -165,14 +178,39 @@ override fun shouldOverrideUrlLoading(
     request: WebResourceRequest?
 ): Boolean {
 
-    if (request?.url.toString().contains(WEBSITE)) {
+    val url = request?.url.toString()
+
+    // Open Google Login in Chrome
+    if (url.contains("glogin.php")) {
+        startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
+        return true
+    }
+
+    // Keep kppllive.in inside WebView
+    if (url.startsWith(WEBSITE)) {
         return false
     }
 
-    Intent(Intent.ACTION_VIEW, request?.url).apply {
-        startActivity(this)
-    }
+    // Open all other links externally
+    startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
     return true
+}
+
+override fun onNewIntent(intent: Intent?) {
+    super.onNewIntent(intent)
+
+    intent?.data?.let { uri ->
+        if (uri.scheme == "kppl" && uri.host == "login-success") {
+
+            val email = uri.getQueryParameter("email")
+
+            if (email != null) {
+                webView.loadUrl(
+                    "https://kppllive.in/app-login.php?email=$email"
+                )
+            }
+        }
+    }
 }
 
     override fun onPageStarted(
