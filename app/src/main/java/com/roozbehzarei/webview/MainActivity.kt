@@ -90,7 +90,13 @@ class MainActivity : AppCompatActivity() {
         webView.settings.userAgentString =
     webView.settings.userAgentString + " KPPLAPP"
         // Start loading the given website URL
-        webView.loadUrl(WEBSITE)
+        val notificationUrl = intent.getStringExtra("url")
+
+        if (!notificationUrl.isNullOrEmpty()) {
+            webView.loadUrl(notificationUrl)
+        } else {
+            webView.loadUrl(WEBSITE)
+        }
 
         // Define Swipe-to-refresh behavior
         binding.root.setOnRefreshListener {
@@ -154,7 +160,14 @@ class MainActivity : AppCompatActivity() {
 override fun onNewIntent(intent: Intent) {
     super.onNewIntent(intent)
 
-    setIntent(intent) // important
+    setIntent(intent)
+
+    val notificationUrl = intent.getStringExtra("url")
+
+    if (!notificationUrl.isNullOrEmpty()) {
+        webView.loadUrl(notificationUrl)
+        return
+    }
 
     intent.data?.let { uri ->
         if (uri.scheme == "kppl" && uri.host == "login-success") {
