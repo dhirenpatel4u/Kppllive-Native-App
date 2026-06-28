@@ -24,7 +24,9 @@ import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import android.webkit.CookieManager
 import android.webkit.WebStorage
+import androidx.browser.customtabs.CustomTabsIntent
 import android.net.Uri
+
 
 // The URL of the website to be loaded
 private const val WEBSITE = "https://kppllive.in"
@@ -202,7 +204,12 @@ override fun shouldOverrideUrlLoading(
 
     // Open Google Login in Chrome
     if (url.contains("glogin.php")) {
-        startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
+
+        val customTabsIntent = CustomTabsIntent.Builder()
+            .setShowTitle(true)
+            .build()
+
+        customTabsIntent.launchUrl(this@MainActivity, Uri.parse(url))
         return true
     }
 
@@ -212,7 +219,8 @@ override fun shouldOverrideUrlLoading(
     }
 
     // Open all other links externally
-    startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
+    val customTabsIntent = CustomTabsIntent.Builder().build()
+    customTabsIntent.launchUrl(this@MainActivity, Uri.parse(url))
     return true
 }
 
