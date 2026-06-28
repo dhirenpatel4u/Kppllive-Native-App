@@ -148,6 +148,25 @@ class MainActivity : AppCompatActivity() {
         
     }
 
+override fun onNewIntent(intent: Intent) {
+    super.onNewIntent(intent)
+
+    setIntent(intent) // important
+
+    intent.data?.let { uri ->
+        if (uri.scheme == "kppl" && uri.host == "login-success") {
+
+            val email = uri.getQueryParameter("email")
+
+            if (email != null) {
+                webView.loadUrl(
+                    "https://kppllive.in/app-login.php?email=$email"
+                )
+            }
+        }
+    }
+}
+
     inner class ThemeBridge {
 
         @JavascriptInterface
@@ -195,25 +214,6 @@ override fun shouldOverrideUrlLoading(
     // Open all other links externally
     startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
     return true
-}
-
-override fun onNewIntent(intent: Intent) {
-    super.onNewIntent(intent)
-
-    setIntent(intent) // important
-
-    intent.data?.let { uri ->
-        if (uri.scheme == "kppl" && uri.host == "login-success") {
-
-            val email = uri.getQueryParameter("email")
-
-            if (email != null) {
-                webView.loadUrl(
-                    "https://kppllive.in/app-login.php?email=$email"
-                )
-            }
-        }
-    }
 }
 
     override fun onPageStarted(
