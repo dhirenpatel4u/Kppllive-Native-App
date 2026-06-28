@@ -60,4 +60,6 @@ dependencies {
     implementation("androidx.webkit:webkit:1.10.0")
     // SplashScreen
     implementation("androidx.core:core-splashscreen:1.0.1")
+
+    implementation "androidx.browser:browser:1.8.0"
 }
