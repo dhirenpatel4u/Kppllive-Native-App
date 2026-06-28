@@ -172,6 +172,11 @@ override fun onNewIntent(intent: Intent) {
     inner class ThemeBridge {
 
         @JavascriptInterface
+        fun setUserId(username: String) {
+            OneSignal.login(username)
+        }
+
+        @JavascriptInterface
         fun setThemeColor(color: String) {
             runOnUiThread {
                 try {
