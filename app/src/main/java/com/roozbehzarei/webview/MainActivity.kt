@@ -175,10 +175,12 @@ override fun onNewIntent(intent: Intent) {
         @JavascriptInterface
         fun setUser(username: String) {
             OneSignal.login(username)
+            OneSignal.User.addTag("logged_in", "true")
         }
 
         @JavascriptInterface
         fun logoutUser() {
+            OneSignal.User.removeTag("logged_in")
             OneSignal.logout()
         }
 
