@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.roozbehzarei.webview"
+    namespace = "in.kppllive.app"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.roozbehzarei.superwebview"
+        applicationId = "in.kppllive.app"
         minSdk = 23
         targetSdk = 34
         versionCode = 1
