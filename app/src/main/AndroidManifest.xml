@@ -39,6 +39,17 @@
                     android:scheme="kppl"
                     android:host="login-success"/>
             </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:scheme="kppl"
+                    android:host="open" />
+            </intent-filter>
             
         </activity>
     </application>
