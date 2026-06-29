@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1019470641068:android:a4288fe811b8c817862c09",
+        "mobilesdk_app_id": "1:1019470641068:android:fd82268b2fdfcd50862c09",
         "android_client_info": {
-          "package_name": "in.kppllive.app"
+          "package_name": "com.kppllive.app"
         }
       },
       "oauth_client": [],
