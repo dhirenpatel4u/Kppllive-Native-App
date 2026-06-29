@@ -272,14 +272,7 @@ override fun shouldOverrideUrlLoading(
     }
 
     if (url.contains("pdf.php")) {
-
-        val intent = Intent(
-            Intent.ACTION_VIEW,
-            Uri.parse(url)
-        )
-
-        startActivity(intent)
-        return true
+        return false
     }
     // Keep kppllive.in inside WebView
     if (url.startsWith(WEBSITE)) {
