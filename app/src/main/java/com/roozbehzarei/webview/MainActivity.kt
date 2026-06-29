@@ -126,7 +126,22 @@ class MainActivity : AppCompatActivity() {
         webView.settings.userAgentString =
     webView.settings.userAgentString + " KPPLAPP"
         // Start loading the given website URL
-        webView.loadUrl(WEBSITE)
+        val deepLink = intent?.data
+
+        if (
+            deepLink?.scheme == "kppl" &&
+            deepLink.host == "open"
+        ) {
+            val url = deepLink.getQueryParameter("url")
+
+            if (!url.isNullOrEmpty()) {
+                webView.loadUrl(url)
+            } else {
+                webView.loadUrl(WEBSITE)
+            }
+        } else {
+            webView.loadUrl(WEBSITE)
+        }
 
         // Define Swipe-to-refresh behavior
         binding.root.setOnRefreshListener {
@@ -210,6 +225,7 @@ override fun onNewIntent(intent: Intent) {
 
             if (!url.isNullOrEmpty()) {
                 webView.loadUrl(url)
+                return@let
             }
         }
     }
