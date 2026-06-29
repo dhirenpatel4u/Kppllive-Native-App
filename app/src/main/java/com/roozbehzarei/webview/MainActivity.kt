@@ -311,18 +311,15 @@ override fun shouldOverrideUrlLoading(
         request: WebResourceRequest?,
         error: WebResourceError?
     ) {
+        if (request?.isForMainFrame != true) {
+            return
+        }
+
         super.onReceivedError(view, request, error)
+
         binding.webView.visibility = View.GONE
         binding.errorLayout.visibility = View.VISIBLE
         binding.root.isEnabled = false
-
-        binding.retryButton.setOnClickListener {
-            if (view?.url.isNullOrEmpty()) {
-                view?.loadUrl(WEBSITE)
-            } else {
-                view?.reload()
-            }
-        }
     }
 }
 
