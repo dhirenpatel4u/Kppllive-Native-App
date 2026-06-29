@@ -1,4 +1,4 @@
-package in.kppllive.app
+package com.kppllive.app
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -17,7 +17,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.webkit.WebSettingsCompat
 import androidx.webkit.WebViewFeature
-import in.kppllive.app.databinding.ActivityMainBinding
+import com.kppllive.app.databinding.ActivityMainBinding
 import android.graphics.Color
 import android.webkit.JavascriptInterface
 import androidx.core.view.WindowCompat
