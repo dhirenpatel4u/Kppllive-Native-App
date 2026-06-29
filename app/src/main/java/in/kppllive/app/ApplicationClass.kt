@@ -2,7 +2,7 @@
 // PURPOSE: Initialize OneSignal when your app launches
 // REQUIREMENT: Must be registered in AndroidManifest.xml
 
-package in.kppllive.app // Replace with your actual package name
+package in.kppllive.app
 
 import android.app.Application
 import kotlinx.coroutines.CoroutineScope
