@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1019470641068:android:9370bbf138e4705d862c09",
+        "mobilesdk_app_id": "1:1019470641068:android:a4288fe811b8c817862c09",
         "android_client_info": {
-          "package_name": "com.roozbehzarei.superwebview"
+          "package_name": "in.kppllive.app"
         }
       },
       "oauth_client": [],
