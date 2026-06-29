@@ -27,6 +27,9 @@ import android.webkit.WebStorage
 import androidx.browser.customtabs.CustomTabsIntent
 import android.net.Uri
 import com.onesignal.OneSignal
+import android.app.DownloadManager
+import android.os.Environment
+import android.webkit.URLUtil
 
 
 // The URL of the website to be loaded
@@ -47,6 +50,39 @@ class MainActivity : AppCompatActivity() {
          * Define and configure [webView]
          */
         webView = binding.webView
+
+        webView.setDownloadListener { url, userAgent, contentDisposition, mimeType, _ ->
+
+            val request = DownloadManager.Request(Uri.parse(url))
+
+            request.setMimeType(mimeType)
+            request.addRequestHeader("User-Agent", userAgent)
+
+            request.setTitle(
+                URLUtil.guessFileName(
+                    url,
+                    contentDisposition,
+                    mimeType
+                )
+            )
+
+            request.setNotificationVisibility(
+                DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED
+            )
+
+            request.setDestinationInExternalPublicDir(
+                Environment.DIRECTORY_DOWNLOADS,
+                URLUtil.guessFileName(
+                    url,
+                    contentDisposition,
+                    mimeType
+                )
+            )
+
+            val dm = getSystemService(DOWNLOAD_SERVICE) as DownloadManager
+            dm.enqueue(request)
+        }
+        
         webView.webViewClient = MyWebViewClient()
         webView.webChromeClient = MyWebChromeClient()
         with(webView.settings) {
@@ -235,6 +271,16 @@ override fun shouldOverrideUrlLoading(
         return true
     }
 
+    if (url.contains("pdf.php")) {
+
+        val intent = Intent(
+            Intent.ACTION_VIEW,
+            Uri.parse(url)
+        )
+
+        startActivity(intent)
+        return true
+    }
     // Keep kppllive.in inside WebView
     if (url.startsWith(WEBSITE)) {
         return false
