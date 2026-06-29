@@ -167,6 +167,15 @@ override fun onNewIntent(intent: Intent) {
                 )
             }
         }
+
+        if (uri.scheme == "kppl" && uri.host == "open") {
+
+            val url = uri.getQueryParameter("url")
+
+            if (!url.isNullOrEmpty()) {
+                webView.loadUrl(url)
+            }
+        }
     }
 }
 
