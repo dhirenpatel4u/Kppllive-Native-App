@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "in.kppllive.app"
+    namespace = "com.kppllive.app"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "in.kppllive.app"
+        applicationId = "com.kppllive.app"
         minSdk = 23
         targetSdk = 34
         versionCode = 1
