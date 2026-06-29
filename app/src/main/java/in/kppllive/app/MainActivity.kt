@@ -17,7 +17,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.webkit.WebSettingsCompat
 import androidx.webkit.WebViewFeature
-import com.roozbehzarei.webview.databinding.ActivityMainBinding
+import in.kppllive.app.databinding.ActivityMainBinding
 import android.graphics.Color
 import android.webkit.JavascriptInterface
 import androidx.core.view.WindowCompat
